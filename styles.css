@@ -1,3 +1,9 @@
-h1 {
-  font-size: 50;
+/* * {
+  outline: 1px solid gold;
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
