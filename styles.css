@@ -3,8 +3,10 @@
 } */
 
 :root {
-  --clr-primary: hsla(0, 0%, 56%, 1);
+  --clr-primary: hsla(0, 0%, 90%, 1);
   --clr-secondary: hsla(0, 0%, 30%, 1);
+
+  --clr-gradient: purple violet pink purple;
 
   --clr-second-main: hsla(210, 100%, 60%, 1);
 
@@ -45,28 +47,48 @@ header,
 section {
   padding: 2rem 0;
 }
+
 header {
   text-align: center;
-  width: min(90%, 70.5rem);
+  width: min(95%, 70.5rem);
   margin-top: 1rem;
   margin-inline: auto;
+  /*  */
+}
 
-  border: 0.5rem var(--clr-second-main);
-  border-style: solid;
-  border-top-left-radius: 5rem 13rem;
-  border-top-right-radius: 4rem 12rem;
-  border-bottom-left-radius: 11rem 1.5rem;
-  border-bottom-right-radius: 12rem 2rem;
-
+header .header-text {
   display: flex;
-  flex-direction: column;
+  flex-direction: reverse;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+header .header-text .header-left p {
+  animation: background-pan 3s linear infinite;
+  background: linear-gradient(to right, purple, violet, pink, purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  white-space: wrap;
+}
+
+header .header-text .header-right p {
+  font-size: 0.8rem;
 }
 
 footer,
 section .content {
   margin-inline: auto;
-  width: min(90%, 70.5rem);
+  width: min(70%, 70.5rem);
 }
 
 .content-header {
@@ -76,16 +98,13 @@ section .content {
 
 .clocks {
   display: flex;
-  /* flex-direction: row; */
   justify-content: space-around;
   flex-wrap: wrap;
-  /* margin-inline: 20%; */
-  /* width: min(90%, 70.5rem); */
   text-align: center;
 }
 
 .clock-block > h3 {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.8rem;
   font-style: italic;
   font-weight: 700;
 }
@@ -100,6 +119,80 @@ section .content {
 }
 
 .footer-text {
-  /* align-items: center;  */
   justify-content: space-around;
+}
+
+.clock-border {
+  border-radius: 30%;
+  border: 0.5rem solid;
+  border-color: rgb(176, 0, 176);
+}
+
+/* Sizing, positioning of main dial of the clock */
+.clock {
+  width: 10rem;
+  height: 10rem;
+  background-color: white;
+  background-size: cover;
+  border-radius: 25%;
+  position: relative;
+  background-image: radial-gradient(
+      circle at center,
+      white 50%,
+      transparent 50%,
+      transparent 65%,
+      white 65%
+    ),
+    linear-gradient(to right, transparent 50%, black 50%, transparent 51%),
+    linear-gradient(to bottom, transparent 50%, black 50%, transparent 51%),
+    linear-gradient(-30deg, transparent 50%, black 50%, transparent 51%),
+    linear-gradient(30deg, transparent 50%, black 50%, transparent 51%),
+    linear-gradient(60deg, transparent 50%, black 50%, transparent 51%),
+    linear-gradient(-60deg, transparent 50%, black 50%, transparent 51%);
+}
+
+.hr,
+.min,
+.sec {
+  width: 1%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  transform-origin: bottom;
+  z-index: 2;
+  border-radius: 2em;
+}
+
+.pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: black;
+  border-radius: 35%;
+  margin: auto;
+  z-index: 10;
+}
+
+/* Different length of different hands of clock */
+.hr {
+  height: 25%;
+  width: 0.3rem;
+  background-color: black;
+}
+
+.min {
+  height: 30%;
+  width: 0.2rem;
+  background-color: black;
+}
+
+.sec {
+  height: 40%;
+  background-color: purple;
+  transform-origin: 50% 85%;
 }

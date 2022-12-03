@@ -14,8 +14,11 @@
 <body>
 
     <header>
-        <h1>Lorem, ipsum dolor.</h1>
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <span class="header-text">
+            <span class="header-left"><h1>Clocks.</h1> <p>Because the <span class="header-text-magic">time</span> matters.</p></span>
+            <span class="header-right"> <h2>16:32:04</h2> <p>Current time zone: UTC +1</p></span>
+        </span>
+    
     </header>
 
     <section>
@@ -26,22 +29,37 @@
             <div class="clocks">
                 <div class="clock-block">
                     <h3 class="clock-header">Clock 1</h3>
-                    <div class="clock">
-                        <a href="# "><img src="https://via.placeholder.com/100" alt=""></a>
+                    <div class="clock-border">
+                        <div class="clock">
+                            <div class="hr"></div>
+                            <div class="min"></div>
+                            <div class="sec"></div>
+                            <div class="pin"></div>
+                        </div>
                     </div>
                     <div class="clock-time"><p>23:59:59</p></div>
                 </div>
                 <div class="clock-block">
                     <h3 class="clock-header">Clock 2</h3>
-                    <div class="clock">
-                        <a href="#"><img src="https://via.placeholder.com/100" alt=""></a>
+                    <div class="clock-border">
+                        <div class="clock">
+                            <div class="hr"></div>
+                            <div class="min"></div>
+                            <div class="sec"></div>
+                            <div class="pin"></div>
+                        </div>
                     </div>
                     <div class="clock-time"><p>23:59:59</p></div>
                 </div>
                 <div class="clock-block">
                     <h3 class="clock-header">Clock 3</h3>
-                    <div class="clock">
-                        <a href="#"><img src="https://via.placeholder.com/100" alt=""></a>
+                    <div class="clock-border">
+                        <div class="clock">
+                            <div class="hr"></div>
+                            <div class="min"></div>
+                            <div class="sec"></div>
+                            <div class="pin"></div>
+                        </div>
                     </div>
                     <div class="clock-time"><p>23:59:59</p></div>
                 </div>
@@ -56,7 +74,38 @@
         </div>
     </footer>
 
-
+    <script>
+  
+        // Selecting all of the css classes 
+        // on which we want to apply functionalities
+        const hr = document.querySelector('.hr')
+        const min = document.querySelector('.min')
+        const sec = document.querySelector('.sec')
+  
+        // Setting up the period of working
+        setInterval(() => {
+  
+            // Extracting the current time 
+            // from DATE() function
+            let day = new Date()
+            let hour = day.getHours()
+            let minutes = day.getMinutes()
+            let seconds = day.getSeconds()
+  
+            // Formula that is explained above for 
+            // the rotation of different hands
+            let hrrotation = (30 * hour) + (0.5 * minutes);
+            let minrotation = 6 * minutes;
+            let secrotation = 6 * seconds;
+  
+            hr.style.transform =
+                `translate(-50%,-100%) rotate(${hrrotation}deg)`
+            min.style.transform =
+                `translate(-50%,-100%) rotate(${minrotation}deg)`
+            sec.style.transform =
+                `translate(-50%,-85%) rotate(${secrotation}deg)`
+        });
+    </script>
 
 
     
