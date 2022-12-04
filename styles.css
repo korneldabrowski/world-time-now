@@ -98,6 +98,12 @@ section .content {
   margin-bottom: 2rem;
 }
 
+.content-header p {
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
 .clocks {
   display: flex;
   justify-content: space-around;
