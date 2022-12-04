@@ -9,14 +9,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
 
+    <script src="https://kit.fontawesome.com/eb5f2112ce.js" crossorigin="anonymous"></script>
+
     <title>World Time Now</title>
 </head>
 <body>
 
-    <header>
+    <header class ="full-bleed">
         <span class="header-text">
             <span class="header-left"><h1>Clocks.</h1> <p>Because the time matters.</p></span>
-            <span class="header-right"> <h2 class="heading-time-now">16:32:04</h2> <p>Current time zone: UTC +1</p></span>
+            <span class="header-right"> <h2 class="heading-time-now">16:32:04</h2> <p>Local time</p></span>
         </span>
     
     </header>
@@ -24,10 +26,18 @@
     <section>
         <div class="content">
             <div class="content-header">           
-                 <h2>Search up country!</h2>
+                 <h2>Search up a country!</h2>
                  <p>Click on which clock to change the displayed time.</p>
                  
-                 <div class="country-search"><input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"></div>
+                 <div class="country-search">
+                    <form autocomplete="off" action="/action_page.php">
+                    <div class="autocomplete">
+                      <input id="myInput" type="text" name="myCountry" placeholder="Country">
+                      
+                    </div>
+                    <input type="submit">
+                  </form>
+                </div>
             </div>
             <div class="clocks">
                 <div class="clock-block">
@@ -70,11 +80,27 @@
         </div>
     </section>
 
-    <footer>
-        <div class="split">
-            <div class="footer-text"><p>Lorem ipsum dolor sit amet consectetur adipisicing.</p></div>
-            <div class="footer-text"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi.</p></div>
-        </div>
+    <footer class="full-bleed">
+       <div class="footer-wrapper">
+           <div class="footer-split">
+                <h4>About</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, atque saepe! Accusantium voluptatem voluptate animi repellendus obcaecati laudantium eum quae delectus ad est, quia repudiandae nobis tempore accusamus fuga vero quos? Dicta dolorem magni blanditiis.</p>
+           </div>
+           <div class="footer-split">
+                <h4>Technologies</h4>
+                <p>Everything is pure, no frameworks, no libraries!</p>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+           </div>
+       </div>
+       <div class="footer-social-media">
+        <div class="footer-element"><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><p>LinkedIn</p></div>
+        <div class="footer-element"><a href="#"><i class="fa-brands fa-github-alt"></i></a><p>GitHub</p></div>
+        <div class="footer-element"><a href="#"><i class="fa-solid fa-code"></i></a><p>CodeWars</p></div>
+       </div>
     </footer>
 
     <script>
@@ -84,6 +110,7 @@
 
 <script src="script.js"></script>
 <script src="search.js"></script>
+<script src="selector.js"></script>
 
 </body>
 </html>
