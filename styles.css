@@ -1,7 +1,3 @@
-/* * {
-  outline: 1px solid gold;
-} */
-
 :root {
   --clr-primary: hsla(0, 0%, 90%, 1);
   --clr-secondary: rgb(176, 0, 176);
@@ -30,7 +26,7 @@ body {
   background-color: black;
   color: var(--clr-primary);
   font-family: var(--ff-primary);
-  font-weight: 200;
+  font-weight: 400;
   font-size: 1.3125rem;
   line-height: 1.6;
 }
@@ -269,14 +265,10 @@ input {
 input[type="text"] {
   color: white;
   background-color: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: var(--clr-secondary) solid;
+  border-width: 0 0 0.1rem 0;
   outline: none;
-  border-bottom: var(--clr-secondary) solid;
-
   margin-top: 0.2rem;
-  /* border-radius: 10% 10%; */
 }
 
 .autocomplete-items {
@@ -287,7 +279,6 @@ input[type="text"] {
   border-right: none;
   border-bottom: var(--clr-secondary) solid;
   z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
   font-size: 1rem;
   top: 100%;
   left: 0%;
@@ -318,7 +309,7 @@ input[type="submit"] {
   border: purple solid;
   color: #fff;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 1rem;
 }
 
 .clock-border:hover {

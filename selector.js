@@ -1,6 +1,9 @@
 // define the three classes using querySelectorAll
 var classes = document.querySelectorAll(".clock-border");
 
+classes[0].dataset.selected = "true";
+classes[0].style.borderColor = "purple";
+
 // define a function to handle the click events
 function handleClick(clickedClass) {
   // remove the border from the other classes
@@ -20,8 +23,8 @@ function handleClick(clickedClass) {
 }
 
 // add a click event listener to each x using a loop
-classes.forEach(function (x) {
-  x.addEventListener("click", function () {
+classes.forEach((x) => {
+  x.addEventListener("click", () => {
     handleClick(x);
   });
 });
