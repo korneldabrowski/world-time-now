@@ -1,73 +1,40 @@
 let clockElement = document.querySelectorAll(".clock-block");
-
 let topRightCurrentTimeClock = document.querySelector(".heading-time-now");
 
-initializeClocks();
-topRightClock();
+setInterval(() => {
+  topRightCurrentTimeClock.textContent = getTime();
+  initializeClocks();
+}, 1000);
 
-function topRightClock() {
-  setInterval(() => {
-    day = getDate();
-    hour = day.getHours();
-    minutes = day.getMinutes();
-    seconds = day.getSeconds();
+function getTime() {
+  let day = new Date();
+  let hour = day.getHours();
+  let minutes = day.getMinutes();
+  let seconds = day.getSeconds();
 
-    if (hour < 10) {
-      hour = "0" + hour;
-    }
+  hour = hour.toString().padStart(2, "0");
+  minutes = minutes.toString().padStart(2, "0");
+  seconds = seconds.toString().padStart(2, "0");
 
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-
-    let time = hour + ":" + minutes + ":" + seconds;
-    topRightCurrentTimeClock.textContent = time;
-  });
-}
-function getDate() {
-  return new Date();
+  return hour + ":" + minutes + ":" + seconds;
 }
 
-for (clock of clockElement) {
-  let digitalClockTime = clock.querySelector(".clock-time");
+function getRotation(time) {
+  let parts = time.split(":");
+  let hr = parseInt(parts[0], 10);
+  let min = parseInt(parts[1], 10);
+  let sec = parseInt(parts[2], 10);
 
-  let hourArrow = clock.querySelector(".hr");
-  let minuteArrow = clock.querySelector(".min");
-  let secondArrow = clock.querySelector(".sec");
+  let hrrotation = 30 * hr + 0.5 * min;
+  let minrotation = 6 * min;
+  let secrotation = 6 * sec;
 
-  setInterval(() => {
-    let day = getDate();
-    let hour = day.getHours();
-    let minutes = day.getMinutes();
-    let seconds = day.getSeconds();
-
-    let hrrotation = 30 * hour + 0.5 * minutes;
-    let minrotation = 6 * minutes;
-    let secrotation = 6 * seconds;
-
-    if (hour < 10) {
-      hour = "0" + hour;
-    }
-
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    digitalClockTime.textContent = hour + ":" + minutes + ":" + seconds;
-    hourArrow.style.transform = `translate(-50%,-100%) rotate(${hrrotation}deg)`;
-    minuteArrow.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
-    secondArrow.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
-  }, 1000);
+  return { hr: hrrotation, min: minrotation, sec: secrotation };
 }
 
 function initializeClocks() {
+  topRightCurrentTimeClock.textContent = getTime();
+
   for (clock of clockElement) {
     let digitalClockTime = clock.querySelector(".clock-time");
 
@@ -75,30 +42,12 @@ function initializeClocks() {
     let minuteArrow = clock.querySelector(".min");
     let secondArrow = clock.querySelector(".sec");
 
-    let day = new Date();
-    let hour = day.getHours();
-    let minutes = day.getMinutes();
-    let seconds = day.getSeconds();
+    let time = getTime();
+    let rotation = getRotation(time);
 
-    let hrrotation = 30 * hour + 0.5 * minutes;
-    let minrotation = 6 * minutes;
-    let secrotation = 6 * seconds;
-
-    if (hour < 10) {
-      hour = "0" + hour;
-    }
-
-    if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-
-    digitalClockTime.textContent = hour + ":" + minutes + ":" + seconds;
-    hourArrow.style.transform = `translate(-50%,-100%) rotate(${hrrotation}deg)`;
-    minuteArrow.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
-    secondArrow.style.transform = `translate(-50%,-85%) rotate(${secrotation}deg)`;
+    digitalClockTime.textContent = time;
+    hourArrow.style.transform = `translate(-50%,-100%) rotate(${rotation.hr}deg)`;
+    minuteArrow.style.transform = `translate(-50%,-100%) rotate(${rotation.min}deg)`;
+    secondArrow.style.transform = `translate(-50%,-85%) rotate(${rotation.sec}deg)`;
   }
 }

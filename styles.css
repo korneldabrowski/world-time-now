@@ -274,15 +274,12 @@ input[type="text"] {
 .autocomplete-items {
   position: absolute;
   border: 0.15rem solid #d4d4d4;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: var(--clr-secondary) solid;
+  border: none;
   z-index: 99;
   font-size: 1rem;
   top: 100%;
   left: 0%;
-  right: 00%;
+  right: 0%;
 }
 
 .autocomplete-items div {
@@ -290,7 +287,12 @@ input[type="text"] {
   font-style: italic;
   color: white;
   cursor: pointer;
-  background-color: black;
+
+  border-bottom: 0.1rem solid purple;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(10, 10, 10, 0.65);
+  box-shadow: 0 8px 32px rgb(2, 4, 24);
 }
 
 /*when hovering an item:*/

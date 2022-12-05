@@ -19,6 +19,9 @@ async function fetchCities() {
   } catch (error) {
     // log any errors to the console
     console.error("Error fetching data:", error);
+    alert(
+      "API  fetching time zones & times around the world unavailable! Please refresh the page or try again in a few seconds."
+    );
   }
 }
 
