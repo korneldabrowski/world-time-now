@@ -27,8 +27,8 @@
         <div class="content">
             <div class="content-header">           
                  <h2>Search up a country!</h2>
-                 <p>Click on which clock to change the displayed time.</p>
-                 
+                 <p>The time will change on the selected clock!.</p>
+                 <ul>
                  <div class="country-search">
                     <form autocomplete="off" action="/action_page.php">
                     <div class="autocomplete">
@@ -42,7 +42,7 @@
             <div class="clocks">
                 <div class="clock-block">
                     <h3 class="clock-header">Stockholm</h3>
-                    <div class="clock-border">
+                    <div data-selected="true" class="clock-border">
                         <div class="clock">
                             <div class="hr"></div>
                             <div class="min"></div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="clock-block">
                     <h3 class="clock-header">New York</h3>
-                    <div class="clock-border">
+                    <div data-selected=false class="clock-border">
                         <div class="clock">
                             <div class="hr"></div>
                             <div class="min"></div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="clock-block">
                     <h3 class="clock-header">Edinburgh</h3>
-                    <div class="clock-border">
+                    <div data-selected="false" class="clock-border">
                         <div class="clock">
                             <div class="hr"></div>
                             <div class="min"></div>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="clock-time"><p>23:59:59</p></div>
-                </div>
+                </div>  
             </div>
         </div>
     </section>

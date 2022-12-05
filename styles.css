@@ -179,7 +179,8 @@ section .content {
 .clock-border {
   border-radius: 30%;
   border: 0.5rem solid;
-  border-color: rgb(176, 0, 176);
+  border-color: #737373;
+  /* z-index: 0; */
 }
 
 /* Sizing, positioning of main dial of the clock */
@@ -318,4 +319,8 @@ input[type="submit"] {
   color: #fff;
   cursor: pointer;
   border-radius: 20px;
+}
+
+.clock-border:hover {
+  cursor: pointer;
 }

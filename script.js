@@ -49,8 +49,6 @@ for (clock of clockElement) {
     let minrotation = 6 * minutes;
     let secrotation = 6 * seconds;
 
-    console.log("xd");
-
     if (hour < 10) {
       hour = "0" + hour;
     }
@@ -98,7 +96,6 @@ function initializeClocks() {
       seconds = "0" + seconds;
     }
 
-    console.log("xd");
     digitalClockTime.textContent = hour + ":" + minutes + ":" + seconds;
     hourArrow.style.transform = `translate(-50%,-100%) rotate(${hrrotation}deg)`;
     minuteArrow.style.transform = `translate(-50%,-100%) rotate(${minrotation}deg)`;
