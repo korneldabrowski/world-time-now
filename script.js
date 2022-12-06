@@ -2,6 +2,7 @@ import { getTimeOfCity } from "./API.js";
 
 let clockElement = document.querySelectorAll(".clock-block");
 let topRightCurrentTimeClock = document.querySelector(".heading-time-now");
+topRightCurrentTimeClock.textContent = getTime();
 
 let myTimes = [];
 
@@ -13,14 +14,9 @@ for (let i = 0; i < myTimes.length; i++) {
   myTimes[i] = getTime(myTimes[i]);
 }
 
-// initializeClocks(myTimes);
-
 setInterval(() => {
-  // topRightCurrentTimeClock.textContent = getTime();
+  topRightCurrentTimeClock.textContent = getTime();
   for (let i = 0; i < clockElement.length; i++) {
-    // console.log(
-    //   "myTime: " + myTimes[i] + " clockel: " + clockElement[i] + " index: " + i
-    // );
     initializeClocks(myTimes[i], clockElement[i], i);
   }
 }, 1000);
@@ -53,6 +49,10 @@ export function initializeClocks(startTime, clock, index) {
     }
   }
 
+  second = second.toString().padStart(2, "0");
+  minute = minute.toString().padStart(2, "0");
+  hour = hour.toString().padStart(2, "0");
+
   // Update the start time with the new values
   myTimes[index] = `${hour}:${minute}:${second}`;
 
@@ -65,20 +65,26 @@ export function initializeClocks(startTime, clock, index) {
 }
 
 export function getTime(timeString) {
-  // Define the regular expression pattern for matching the time
-  const timePattern = new RegExp(/([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]/);
+  if (timeString) {
+    // Define the regular expression pattern for matching the time
+    console.log(timeString);
+    const timePattern = new RegExp(/([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]/);
 
-  // Use the regular expression to search the string for a match
-  let timeMatch = timeString.match(timePattern);
+    // Use the regular expression to search the string for a match
+    let timeMatch = timeString.match(timePattern);
 
-  if (timeMatch) {
-    // If a match is found, extract the matched time and print it
-    let time = timeMatch[0];
-    return time.toString();
+    if (timeMatch) {
+      // If a match is found, extract the matched time and print it
+      let time = timeMatch[0];
+      return time.toString();
+    } else {
+      // If no match is found, print an error message
+      console.log("Error: Could not find a time in the specified format");
+      alert("Error: Could not find a time in the specified format");
+    }
   } else {
-    // If no match is found, print an error message
-    console.log("Error: Could not find a time in the specified format");
-    alert("Error: Could not find a time in the specified format");
+    let date = new Date();
+    return date.toLocaleTimeString();
   }
 }
 

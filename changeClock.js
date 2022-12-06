@@ -18,7 +18,8 @@ async function myFunction() {
 
       let time = await getTimeOfCity(header.textContent);
       time = getTime(time);
-      initializeClocks(time, classes[i], i);
+
+      initializeClocks(time, classes2[i], i);
     }
   }
 }
