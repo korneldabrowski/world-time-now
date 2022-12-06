@@ -26,22 +26,21 @@
     <section>
         <div class="content">
             <div class="content-header">           
-                 <h2>Search up a capital city!</h2>
+                 <h2>Search up a Time Zone!</h2>
                  <p>The time will change on the selected clock!.</p>
                  <ul>
                  <div class="country-search">
-                    <form autocomplete="off" action="/action_page.php">
+                    <!-- <form autocomplete="off" onsubmit="myConsoleLog(); return false"> -->
                     <div class="autocomplete">
                       <input id="myInput" type="text" name="myCountry" placeholder="Country">
-                      
                     </div>
-                    <input type="submit">
-                  </form>
+                    <input id ='submitClockCity' type="submit">
+                  <!-- </form> -->
                 </div>
             </div>
             <div class="clocks">
                 <div class="clock-block">
-                    <h3 class="clock-header">Stockholm</h3>
+                    <h3 class="clock-header">New_York</h3>
                     <div data-selected="true" class="clock-border">
                         <div class="clock">
                             <div class="hr"></div>
@@ -53,7 +52,7 @@
                     <div class="clock-time"><p>23:59:59</p></div>
                 </div>
                 <div class="clock-block">
-                    <h3 class="clock-header">New York</h3>
+                    <h3 class="clock-header">Tokyo</h3>
                     <div data-selected=false class="clock-border">
                         <div class="clock">
                             <div class="hr"></div>
@@ -65,7 +64,7 @@
                     <div class="clock-time"><p>23:59:59</p></div>
                 </div>
                 <div class="clock-block">
-                    <h3 class="clock-header">Edinburgh</h3>
+                    <h3 class="clock-header">London</h3>
                     <div data-selected="false" class="clock-border">
                         <div class="clock">
                             <div class="hr"></div>
@@ -107,10 +106,13 @@
   
     </script>
 
+<script type="module" src="API.js"></script>
 
-<script src="script.js"></script>
-<script src="search.js"></script>
+<script type="module" src="script.js"></script>
 <script src="selector.js"></script>
+<script type ="module" src="changeClock.js"></script>
+
+<script type="module" src="search.js"></script>
 
 </body>
 </html>

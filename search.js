@@ -1,39 +1,6 @@
-async function fetchCities() {
-  try {
-    // fetch the response from the API
-    let response = await fetch("http://worldtimeapi.org/api/timezone");
+import { fetchCities } from "./API.js";
 
-    // parse the response as JSON
-    let data = await response.json();
-
-    // extract the city names from the response data
-    let cities = data.map(function (item) {
-      return item.split("/")[1];
-    });
-
-    cities.forEach(function (city) {
-      if (city !== undefined) {
-        countries.push(city);
-      }
-    });
-  } catch (error) {
-    // log any errors to the console
-    console.error("Error fetching data:", error);
-    alert(
-      "API  fetching time zones & times around the world unavailable! Please refresh the page or try again in a few seconds."
-    );
-  }
-}
-
-fetchCities();
-
-let countries = [];
-
-countries = countries.filter(function (item) {
-  return item !== undefined;
-});
-
-console.log(countries);
+let countries = await fetchCities();
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,

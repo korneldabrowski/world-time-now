@@ -10,7 +10,7 @@ function handleClick(clickedClass) {
   classes.forEach(function (x) {
     if (x !== clickedClass) {
       x.dataset.selected = "false";
-      x.style.borderColor = "gray";
+      x.style.borderColor = "#26272b";
     }
   });
 
