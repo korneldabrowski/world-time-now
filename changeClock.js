@@ -1,4 +1,4 @@
-import { getTime, initializeClocks } from "./script.js";
+import { getTime, initializeClocks } from "./updateClocks.js";
 import { getTimeOfCity } from "./API.js";
 
 document
