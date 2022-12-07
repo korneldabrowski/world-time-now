@@ -8,10 +8,8 @@ export async function getTimeOfCity(cityName) {
     // Find the continent that the city belongs to
     let cityInfo = data.find((info) => info.includes(cityName));
 
-    let continent = cityInfo.split("/")[0];
-
     // Build the URL for the API request for the city's timezone
-    let timeUrl = `http://worldtimeapi.org/api/timezone/${continent}/${cityName}`;
+    let timeUrl = `http://worldtimeapi.org/api/timezone/${cityInfo}`;
 
     // Make the API request for the city's timezone
     let timeResponse = await fetch(timeUrl);

@@ -1,5 +1,6 @@
 import { getTime, initializeClocks } from "./updateClocks.js";
 import { getTimeOfCity } from "./API.js";
+import { countries } from "./search.js";
 
 document
   .getElementById("submitClockCity")
@@ -8,6 +9,11 @@ document
 let classes = document.querySelectorAll(".clock-border");
 
 async function myFunction() {
+  let searchText = document.getElementById("myInput").value;
+  if (countries.includes(searchText)) {
+    console.log("yay");
+  }
+
   for (let i = 0; i < classes.length; i++) {
     if (classes[i].dataset.selected == "true") {
       let classes2 = document.querySelectorAll(".clock-block");

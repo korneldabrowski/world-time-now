@@ -1,6 +1,6 @@
 import { fetchCities } from "./API.js";
 
-let countries = await fetchCities();
+export let countries = await fetchCities();
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
