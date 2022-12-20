@@ -1,12 +1,10 @@
 /* * {
-  outline: 1px solid gold;
+  border: 1px solid gold;
 } */
 
 :root {
   --clr-primary: hsla(0, 0%, 90%, 1);
-  --clr-secondary: hsla(0, 0%, 30%, 1);
-
-  --clr-gradient: purple violet pink purple;
+  --clr-secondary: rgb(176, 0, 176);
 
   --clr-second-main: hsla(210, 100%, 60%, 1);
 
@@ -23,6 +21,7 @@ body,
 h1,
 h2,
 h3,
+h4,
 p {
   margin: 0;
 }
@@ -31,7 +30,7 @@ body {
   background-color: black;
   color: var(--clr-primary);
   font-family: var(--ff-primary);
-  font-weight: 200;
+  font-weight: 400;
   font-size: 1.3125rem;
   line-height: 1.6;
 }
@@ -48,18 +47,23 @@ section {
   padding: 2rem 0;
 }
 
+.full-bleed {
+  box-shadow: 0 0 0 100vmax #26272b;
+  clip-path: inset(0 -100vmax);
+}
+
+footer,
 header {
+  background-color: #26272b;
+  justify-content: center;
   text-align: center;
   width: min(95%, 70.5rem);
-  margin-top: 1rem;
   margin-inline: auto;
-  /*  */
 }
 
 header .header-text {
   display: flex;
-  flex-direction: reverse;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -72,6 +76,7 @@ header .header-text {
   }
 }
 
+header .header-text .header-right h2,
 header .header-text .header-left p {
   animation: background-pan 3s linear infinite;
   background: linear-gradient(to right, purple, violet, pink, purple);
@@ -82,10 +87,10 @@ header .header-text .header-left p {
 }
 
 header .header-text .header-right p {
+  font-style: italic;
   font-size: 0.8rem;
 }
 
-footer,
 section .content {
   margin-inline: auto;
   width: min(70%, 70.5rem);
@@ -94,6 +99,12 @@ section .content {
 .content-header {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.content-header p {
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .clocks {
@@ -114,18 +125,57 @@ section .content {
   font-style: italic;
 }
 
-.split {
+.footer-wrapper {
   display: flex;
+  flex-direction: row;
+  gap: 5%;
 }
 
-.footer-text {
-  justify-content: space-around;
+.footer-split {
+  margin-top: 1rem;
+  width: 50%;
+  line-height: 2.2;
+  text-align: start;
+}
+
+.footer-split h4 {
+  color: white;
+}
+
+.footer-split li,
+.footer-split p {
+  margin-top: 0;
+  color: #737373;
+  font-size: 0.8rem;
+}
+
+.footer-split ul {
+  margin-top: 0;
+}
+
+.footer-split:nth-child(2) {
+  border-bottom: #737373 solid;
+}
+
+.footer-social-media {
+  margin-left: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer-element {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-element p {
+  font-size: 0.6rem;
 }
 
 .clock-border {
   border-radius: 30%;
   border: 0.5rem solid;
-  border-color: rgb(176, 0, 176);
+  border-color: #26272b;
 }
 
 /* Sizing, positioning of main dial of the clock */
@@ -195,4 +245,70 @@ section .content {
   height: 40%;
   background-color: purple;
   transform-origin: 50% 85%;
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  color: black;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+input[type="text"] {
+  color: white;
+  background-color: transparent;
+  border: var(--clr-secondary) solid;
+  border-width: 0 0 0.1rem 0;
+  outline: none;
+  margin-top: 0.2rem;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: none;
+  z-index: 99;
+  font-size: 1rem;
+  top: 100%;
+  left: 0%;
+  right: 0%;
+}
+
+.autocomplete-items div {
+  padding: 0.6rem;
+  font-style: italic;
+  color: white;
+  cursor: pointer;
+  border-bottom: 0.1rem solid purple;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(10, 10, 10, 0.65);
+  box-shadow: 0 8px 32px rgb(2, 4, 24);
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: var(--clr-secondary);
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: var(--clr-secondary) !important;
+  color: #ffffff;
+}
+
+input[type="submit"] {
+  background-color: transparent;
+  border: purple solid;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.clock-border:hover {
+  cursor: pointer;
 }
